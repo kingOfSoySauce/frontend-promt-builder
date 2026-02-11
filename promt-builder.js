@@ -336,7 +336,7 @@ function render() {
     }
 
     if (sec.type === "single+custom") {
-      card.appendChild(createEl("label", { html: "下拉选择（单选）" }));
+      // card.appendChild(createEl("label", { html: "下拉选择（单选）" }));
       const sel = createEl("select", {});
       sel.appendChild(createEl("option", { value: "", html: "（请选择）" }));
       sec.items.forEach(opt => {
