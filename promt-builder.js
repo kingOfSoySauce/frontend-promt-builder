@@ -354,7 +354,7 @@ function render() {
       });
       card.appendChild(sel);
     } else {
-      card.appendChild(createEl("label", { html: "点击切换选中（多选）" }));
+      // card.appendChild(createEl("label", { html: "点击切换选中（多选）" }));
       const list = createEl("div", { class: "check-list" });
       sec.items.forEach(opt => {
         const label = T(opt, uiLang) || opt;
@@ -393,10 +393,10 @@ function render() {
 }
 
 // ── Toolbar events ──
-document.getElementById("btnGenerate").addEventListener("click", () => {
-  output.value = buildPrompt();
-  setStatus("已生成。");
-});
+// document.getElementById("btnGenerate").addEventListener("click", () => {
+//   output.value = buildPrompt();
+//   setStatus("已生成。");
+// });
 
 document.getElementById("btnCopy").addEventListener("click", async () => {
   const text = output.value || buildPrompt();

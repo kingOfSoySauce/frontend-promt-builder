@@ -16,7 +16,7 @@
   <div class="main">
     <div class="panel-left"><div id="formArea" class="grid"></div></div>
     <div class="panel-right">
-      <div class="pr-head"><h2>&gt; OUTPUT</h2><span class="small" id="status"></span></div>
+      <div class="pr-head"><h2>&gt; OUTPUT</h2><div ></span><span class="small" id="status"></span><button class="btn" id="btnCopy">⎘ 复制</button></div></div>
       <div class="pr-body">
         <label>完整提示词（可直接复制给 AI）</label>
         <textarea id="output" placeholder="// 加载后自动生成..."></textarea>
@@ -24,11 +24,11 @@
     </div>
   </div>
   <div class="toolbar">
-    <button class="btn primary" id="btnGenerate">▶ 生成提示词</button>
-    <button class="btn" id="btnCopy">⎘ 复制</button>
+    <!-- <button class="btn primary" id="btnGenerate">▶ 生成提示词</button> -->
+    
     <button class="btn" id="btnReset">↺ 重置</button>
-    <button class="btn" id="btnSave">↓ 保存到本地</button>
-    <button class="btn" id="btnLoad">↑ 从本地加载</button>
+    <button class="btn" id="btnSave">↓ 保存本地</button>
+    <button class="btn" id="btnLoad">↑ 本地加载</button>
   </div>
   <div class="hint">扩展方式：只改 <code>CONFIG</code> JSON（加模块、加选项、改默认值、改文案中英）。</div>
 </div>
