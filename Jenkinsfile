@@ -16,6 +16,14 @@ pipeline {
     stage("Checkout") {
       steps {
         checkout(scm)
+        sh """
+          echo "📦 最近提交："
+          git log --oneline -5
+          echo ""
+          echo "🔖 当前 commit: \$(git rev-parse --short HEAD)"
+          echo "👤 作者: \$(git log -1 --format='%an')"
+          echo "💬 信息: \$(git log -1 --format='%s')"
+        """
       }
     }
 
@@ -37,11 +45,9 @@ pipeline {
         dir("${env.PROJECT_DIR}") {
           sh """
             set -e
-            # 停掉旧容器
             docker stop ${env.CONTAINER_NAME} || true
             docker rm ${env.CONTAINER_NAME} || true
 
-            # 构建并启动
             docker build -t ${env.CONTAINER_NAME} .
             docker run -d \
               --name ${env.CONTAINER_NAME} \
@@ -66,14 +72,14 @@ pipeline {
             exit 1
           fi
 
-          echo "✅ 部署成功，访问 http://<你的服务器IP>:${env.PORT}/"
+          echo "✅ 部署成功，访问 http://localhost:${env.PORT}/"
         """
       }
     }
   }
 
   post {
-    success { echo "✅ 部署成功！访问 http://<服务器IP>:${env.PORT}/" }
+    success { echo "✅ 部署成功！" }
     failure { echo "❌ 部署失败，请检查日志" }
     always  { echo "📊 部署完成，时间: ${new Date()}" }
   }
